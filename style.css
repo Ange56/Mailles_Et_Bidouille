@@ -182,3 +182,53 @@ footer .logo{color:#F4EEDF;}
   .gallery .card-body.compact .tag{font-size:10.5px;}
   .gallery-title{font-size:22px;}
 }
+
+
+/* =====================================================================
+   Cartes cliquables, page « une peluche », mention -36 mois
+   ===================================================================== */
+a.card-link{display:block;color:inherit;transition:transform .15s ease,box-shadow .15s ease;}
+a.card-link:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(51,42,32,0.10);}
+a.card-link:focus-visible{outline:3px solid var(--mustard);outline-offset:3px;}
+
+.back-link{display:inline-block;margin:32px 0 18px;font-size:14.5px;font-weight:700;color:var(--pine);}
+.back-link:hover{color:var(--berry);}
+
+.detail{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;padding-bottom:24px;}
+.detail-main{aspect-ratio:4/5;border-radius:22px;overflow:hidden;background:var(--cream-2);border:1px solid var(--line);}
+.detail-main img{width:100%;height:100%;object-fit:cover;cursor:zoom-in;}
+.thumbs{display:flex;gap:10px;margin-top:12px;}
+.thumb{width:72px;height:72px;padding:0;border-radius:12px;overflow:hidden;border:2px solid transparent;background:var(--cream-2);cursor:pointer;}
+.thumb img{width:100%;height:100%;object-fit:cover;}
+.thumb.active{border-color:var(--mustard);}
+.thumb:focus-visible{outline:3px solid var(--mustard);outline-offset:2px;}
+
+.detail-info .eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:12px;font-weight:700;color:var(--berry);display:block;margin-bottom:10px;}
+.detail-info h1{font-size:36px;line-height:1.15;margin-bottom:16px;}
+.detail-text{font-size:16.5px;color:var(--ink-soft);margin:0 0 18px;}
+.detail-size{font-size:15px;margin:0 0 18px;}
+.detail-handmade{font-size:14px;color:var(--ink-soft);margin:18px 0 24px;}
+
+.notice{background:#FFF6DD;border:1px solid #EBD38B;border-radius:14px;padding:14px 18px;}
+.notice strong{display:block;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:#7A5A0B;margin-bottom:4px;}
+.notice p{margin:0;font-size:14.5px;color:#5B4510;}
+
+.see-also{padding-top:36px;padding-bottom:56px;}
+.detail-missing{text-align:center;padding:72px 24px;}
+.detail-missing p{color:var(--ink-soft);margin-bottom:24px;}
+
+.footer-notice{font-size:13px;color:#D9D1BE;border-top:1px solid rgba(233,226,210,0.15);padding-top:18px;margin:0 0 18px;}
+
+@media (max-width:820px){
+  .detail{grid-template-columns:1fr;gap:28px;}
+  .detail-info h1{font-size:30px;}
+}
+
+/* --- accueil : section « Ce que je fais » --- */
+.about-sub{font-size:19px;margin:26px 0 8px;}
+.about-note{font-size:14px;color:#7A5A0B;background:#FFF6DD;border:1px solid #EBD38B;border-radius:12px;padding:10px 14px;display:inline-block;}
+
+/* --- page peluche sur téléphone : 2 suggestions suffisent (évite une carte orpheline) --- */
+@media (max-width:560px){
+  .see-also .card:nth-child(3){display:none;}
+}
