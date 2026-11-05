@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Peluches — Mailles et Bidouille</title>
-<meta name="description" content="La galerie des peluches au crochet de Mailles et Bidouille : poulpes clowns, tortues, tricératops, pélican. Faites main, uniques.">
+<meta name="description" content="La galerie des peluches au crochet de Mailles et Bidouille : poulpes clowns, tortues, dragon, pélican. Faites main, décoratives.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
@@ -20,7 +20,7 @@
     </a>
     <nav class="links">
       <a href="peluches.html" class="active">Peluches</a>
-      <a href="index.html#atelier">L'atelier</a>
+      <a href="index.html#atelier">Qui je suis</a>
       <a href="index.html#contact">Contact</a>
     </nav>
     <a href="index.html#contact" class="nav-cta">Me contacter</a>
@@ -28,7 +28,7 @@
   </div>
   <div class="mobile-panel" id="mobile-panel">
     <a href="peluches.html">Peluches</a>
-    <a href="index.html#atelier">L'atelier</a>
+    <a href="index.html#atelier">Qui je suis</a>
     <a href="index.html#contact">Contact</a>
   </div>
 </header>
@@ -41,85 +41,18 @@
   <div class="page-head wrap">
     <span class="eyebrow">La galerie</span>
     <h1>Les peluches</h1>
-    <p>Chaque peluche est crochetée à la main, une maille à la fois. Touchez une photo pour l'agrandir.</p>
+    <p>Chaque peluche est crochetée à la main, une maille à la fois. Touchez-en une pour la découvrir de plus près.</p>
   </div>
 
-  <!-- Pour ajouter une peluche : copier un bloc <div class="card"> dans la bonne famille,
-       puis changer la photo (dossier images/), le nom et la description.
-       Pour une nouvelle famille : copier un bloc <section> entier. -->
+  <!-- La galerie est créée automatiquement à partir du fichier peluches-data.js -->
+  <div id="gallery"></div>
 
-  <section class="gallery-section">
-    <div class="wrap">
-      <h2 class="gallery-title">Les poulpes clowns</h2>
-      <div class="grid-3 gallery">
-        <div class="card">
-          <div class="card-img tall"><img src="images/poulpe-clown-tricolore.jpg" alt="Poulpe clown au crochet rouge, gris et bleu, avec un chapeau pointu" data-zoom loading="lazy"></div>
-          <div class="card-body compact"><span class="tag">Poulpe clown</span><h3>Rouge, gris et bleu</h3></div>
-        </div>
-        <div class="card">
-          <div class="card-img tall"><img src="images/poulpe-clown-jaune.jpg" alt="Poulpe clown au crochet jaune, rouge et bleu, avec un chapeau pointu" data-zoom loading="lazy"></div>
-          <div class="card-body compact"><span class="tag">Poulpe clown</span><h3>Jaune, rouge et bleu</h3></div>
-        </div>
-        <div class="card">
-          <div class="card-img tall"><img src="images/poulpe-clown-orange-bleu.jpg" alt="Poulpe clown au crochet orange, bleu et gris, posé sur un tabouret" data-zoom loading="lazy"></div>
-          <div class="card-body compact"><span class="tag">Poulpe clown</span><h3>Orange et bleu</h3></div>
-        </div>
-        <div class="card">
-          <div class="card-img tall"><img src="images/poulpe-clown-orange-gris.jpg" alt="Poulpe clown au crochet gris, orange et bordeaux, posé sur un tabouret" data-zoom loading="lazy"></div>
-          <div class="card-body compact"><span class="tag">Poulpe clown</span><h3>Gris, orange et bordeaux</h3></div>
-        </div>
-        <div class="card">
-          <div class="card-img tall"><img src="images/poulpes-clowns-duo-table.jpg" alt="Deux poulpes clowns au crochet côte à côte, l'un rouge et gris, l'autre jaune" data-zoom loading="lazy"></div>
-          <div class="card-body compact"><span class="tag">Duo</span><h3>Le duo tricolore et jaune</h3></div>
-        </div>
-        <div class="card">
-          <div class="card-img tall"><img src="images/poulpes-clowns-duo-tabouret.jpg" alt="Deux poulpes clowns au crochet côte à côte sur un tabouret, l'un orange et bleu, l'autre gris et bordeaux" data-zoom loading="lazy"></div>
-          <div class="card-body compact"><span class="tag">Duo</span><h3>Le duo orange et gris</h3></div>
-        </div>
-      </div>
+  <div class="wrap">
+    <div class="soon-card">
+      <h3>D'autres créations arrivent bientôt</h3>
+      <p style="margin:6px 0 0;">Cette galerie s'agrandit au fil de mes créations. Repassez de temps en temps !</p>
     </div>
-  </section>
-
-  <section class="gallery-section">
-    <div class="wrap">
-      <h2 class="gallery-title">Les tortues</h2>
-      <div class="grid-3 gallery">
-        <div class="card">
-          <div class="card-img tall"><img src="images/tortue-rose.jpg" alt="Tortue au crochet rose avec une carapace bleue" data-zoom loading="lazy" style="object-position:center 55%;"></div>
-          <div class="card-body compact"><span class="tag">Tortue</span><h3>Rose et bleue</h3></div>
-        </div>
-        <div class="card">
-          <div class="card-img tall"><img src="images/tortue-bleue.jpg" alt="Tortue au crochet bleu-gris avec une carapace rose" data-zoom loading="lazy" style="object-position:center 70%;"></div>
-          <div class="card-body compact"><span class="tag">Tortue</span><h3>Bleue et rose</h3></div>
-        </div>
-        <div class="card">
-          <div class="card-img tall"><img src="images/tortues-duo.jpg" alt="Deux tortues au crochet, l'une rose et bleue, l'autre bleue et rose" data-zoom loading="lazy" style="object-position:center 60%;"></div>
-          <div class="card-body compact"><span class="tag">Duo</span><h3>Le duo de tortues</h3></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="gallery-section">
-    <div class="wrap">
-      <h2 class="gallery-title">Les grands formats</h2>
-      <div class="grid-3 gallery">
-        <div class="card">
-          <div class="card-img tall"><img src="images/peluche-dragon.jpg" alt="Peluche tricératops bleu au crochet, avec cornes blanches et ailes orange" data-zoom loading="lazy"></div>
-          <div class="card-body compact"><span class="tag">Peluche</span><h3>Bébé tricératops</h3></div>
-        </div>
-        <div class="card">
-          <div class="card-img tall"><img src="images/peluche-pelican.jpg" alt="Peluche pélican blanc au crochet avec un grand bec moutarde" data-zoom loading="lazy" style="object-position:center 30%;"></div>
-          <div class="card-body compact"><span class="tag">Peluche</span><h3>Pélican</h3></div>
-        </div>
-      </div>
-
-      <div class="soon-card">
-        <h3>D'autres créations arrivent bientôt</h3>
-        <p style="margin:6px 0 0;">Cette galerie s'agrandit au fil de mes créations. Repassez de temps en temps !</p>
-      </div>
-    </div>
-  </section>
+  </div>
 </main>
 
 <footer>
@@ -134,10 +67,11 @@
       </div>
       <div class="footer-links">
         <a href="peluches.html">Peluches</a>
-        <a href="index.html#atelier">L'atelier</a>
+        <a href="index.html#atelier">Qui je suis</a>
         <a href="index.html#contact">Contact</a>
       </div>
     </div>
+    <p class="footer-notice">Peluches décoratives : non destinées aux enfants de moins de 36 mois.</p>
     <div class="footer-bottom">
       <span>© 2026 Mailles et Bidouille. Tous droits réservés.</span>
       <span>Fait main, avec patience.</span>
@@ -145,6 +79,7 @@
   </div>
 </footer>
 
+<script src="peluches-data.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
