@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Porte-clés & déco - Mailles et Bidouille</title>
+<meta name="description" content="Les porte-clés et la déco au crochet de Mailles et Bidouille, faits main.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" class="logo">
+      Mailles et Bidouille
+    </a>
+    <nav class="links">
+    <a href="peluches.html">Peluches décorative</a>
+    <a href="accessoires.html" class="active">Porte-clés &amp; déco</a>      
+    <a href="index.html#atelier">Qui je suis</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <!--<a href="index.html#contact" class="nav-cta">Me contacter</a>-->
+    <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-panel"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-panel" id="mobile-panel">
+    <a href="peluches.html">Peluches décorative</a>
+    <a href="accessoires.html">Porte-clés &amp; déco</a>
+    <a href="index.html#atelier">Qui je suis</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</header>
+
+<svg class="stitch-divider" viewBox="0 0 1200 34" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0 17 Q 15 2, 30 17 T 60 17 T 90 17 T 120 17 T 150 17 T 180 17 T 210 17 T 240 17 T 270 17 T 300 17 T 330 17 T 360 17 T 390 17 T 420 17 T 450 17 T 480 17 T 510 17 T 540 17 T 570 17 T 600 17 T 630 17 T 660 17 T 690 17 T 720 17 T 750 17 T 780 17 T 810 17 T 840 17 T 870 17 T 900 17 T 930 17 T 960 17 T 990 17 T 1020 17 T 1050 17 T 1080 17 T 1110 17 T 1140 17 T 1170 17 T 1200 17"/>
+</svg>
+
+<main>
+  <div class="page-head wrap">
+    <span class="eyebrow">La galerie</span>
+    <h1>Porte-clés & déco</h1>
+    <p>Des petites créations au crochet, faites main. Touchez-en une pour la découvrir de plus près.</p>
+  </div>
+
+  <!-- La galerie est créée automatiquement à partir du fichier peluches-data.js -->
+  <div id="gallery" data-categorie="accessoire"></div>
+
+  <div class="wrap">
+    <div class="soon-card">
+      <h3>D'autres créations arrivent bientôt</h3>
+      <p style="margin:6px 0 0;">Dessous de verre, déco de Noël… Repassez de temps en temps !</p>
+    </div>
+  </div>
+  <br>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="logo">
+          Mailles et Bidouille
+        </a>
+        <p style="font-size:13.5px;color:#B7AF9C;margin-top:10px;max-width:34ch;">Peluches au crochet faites main.</p>
+      </div>
+      
+      <div class="footer-social" data-social></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Mailles et Bidouille. Tous droits réservés.</span>
+      <span>Fait main, avec patience.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="peluches-data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

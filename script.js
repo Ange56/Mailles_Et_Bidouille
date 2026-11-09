@@ -22,12 +22,15 @@ function slug(text) {
     .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 }
 
-// Vignette cliquable d'une peluche (utilisée dans la galerie et dans « À découvrir aussi »)
-function makeCard(p) {
+// Vignette cliquable d'une peluche (galerie et « À découvrir aussi »)
+// "from" (facultatif) : ajoute &from=... dans l'adresse pour savoir d'où on vient
+function makeCard(p, from) {
   var ph = p.photos[0];
   var img = h('img', { src: ph.src, alt: ph.alt, loading: 'lazy' });
   if (ph.pos) img.style.objectPosition = 'center ' + ph.pos;
-  return h('a', { class: 'card card-link', href: 'peluche.html?id=' + encodeURIComponent(p.id) }, [
+  var href = 'peluche.html?id=' + encodeURIComponent(p.id);
+  if (typeof from === 'string' && from) href += '&from=' + encodeURIComponent(from);
+  return h('a', { class: 'card card-link', href: href }, [
     h('div', { class: 'card-img tall' }, [img]),
     h('div', { class: 'card-body compact' }, [
       h('span', { class: 'tag', text: p.type }),
@@ -36,15 +39,12 @@ function makeCard(p) {
   ]);
 }
 
-
 // ---------- Liens vers mes autres pages ----------
 var LIENS = [
   { nom: 'Instagram', url: 'https://www.instagram.com/mailles_et_bidouille?utm_source=ig_web_button_share_sheet&xtok=ZDNlZDc0MzIxNw==' },
   { nom: 'Facebook', url: 'https://www.facebook.com/share/19e8442oCR/' },
   { nom: 'Mon dressing Vinted', url: 'https://www.vinted.fr/member/85136978-abreizha' }
 ];
-
-
 
 document.querySelectorAll('[data-vinted]').forEach(function (a) {
   var v = LIENS.filter(function (l) { return /vinted/i.test(l.nom); })[0];
@@ -64,8 +64,9 @@ document.querySelectorAll('[data-vinted]').forEach(function (a) {
   });
 })();
 
-
+// =====================================================================
 //  Menu mobile
+// =====================================================================
 (function () {
   var burger = document.querySelector('.burger');
   var panel = document.getElementById('mobile-panel');
@@ -122,21 +123,27 @@ document.querySelectorAll('[data-vinted]').forEach(function (a) {
 })();
 
 // =====================================================================
-//  Page « Peluches » : galerie générée depuis peluches-data.js
+//  Galeries (peluches.html et accessoires.html) : générées depuis peluches-data.js
+//  La catégorie vient de l'attribut data-categorie de <div id="gallery">
 // =====================================================================
 (function () {
   var root = document.getElementById('gallery');
   if (!root || typeof PELUCHES === 'undefined') return;
 
+  var cat = root.getAttribute('data-categorie') || 'peluche';
+  var list = PELUCHES.filter(function (p) { return (p.categorie || 'peluche') === cat; });
+
   var order = [];
   var groups = {};
-  PELUCHES.forEach(function (p) {
+  list.forEach(function (p) {
     if (!groups[p.famille]) { groups[p.famille] = []; order.push(p.famille); }
     groups[p.famille].push(p);
   });
 
   order.forEach(function (famille) {
-    var grid = h('div', { class: 'grid-3 gallery' }, groups[famille].map(makeCard));
+    var grid = h('div', { class: 'grid-3 gallery' }, groups[famille].map(function (p) {
+      return makeCard(p);
+    }));
     root.appendChild(
       h('section', { class: 'gallery-section', id: slug(famille) }, [
         h('div', { class: 'wrap' }, [
@@ -161,7 +168,10 @@ document.querySelectorAll('[data-vinted]').forEach(function (a) {
   var root = document.getElementById('detail');
   if (!root || typeof PELUCHES === 'undefined') return;
 
-  var id = new URLSearchParams(window.location.search).get('id');
+  var params = new URLSearchParams(window.location.search);
+  var id = params.get('id');
+  var from = params.get('from'); // "accueil" si on vient de la page d'accueil
+
   var idx = -1;
   PELUCHES.forEach(function (p, i) { if (p.id === id) idx = i; });
 
@@ -175,7 +185,8 @@ document.querySelectorAll('[data-vinted]').forEach(function (a) {
   }
 
   var p = PELUCHES[idx];
-  document.title = p.type + ' ' + p.nom + ' — Mailles et Bidouille';
+  var isAccessoire = (p.categorie === 'accessoire');
+  document.title = p.type + ' ' + p.nom + ' - Mailles et Bidouille';
 
   // --- photos ---
   function applyPhoto(img, ph) {
@@ -221,30 +232,103 @@ document.querySelectorAll('[data-vinted]').forEach(function (a) {
     ]));
   }
 
-  info.appendChild(h('div', { class: 'notice' }, [
-    h('strong', { text: 'Peluche décorative' }),
-    h('p', { text: 'Cette peluche est décorative : elle n’est pas destinée aux enfants de moins de 36 mois.' })
-  ]));
+  // info.appendChild(h('div', { class: 'notice' }, [
+  //   h('strong', { text: 'Peluche décorative' }),
+  //   h('p', { text: 'Cette peluche est décorative : elle n’est pas destinée aux enfants de moins de 36 mois.' })
+  // ]));
 
-  info.appendChild(h('p', { class: 'detail-handmade', text: 'Chaque peluche est crochetée à la main : de légères différences sont possibles d’une pièce à l’autre.' }));
+  // info.appendChild(h('p', { class: 'detail-handmade', text: 'Chaque peluche est crochetée à la main : de légères différences sont possibles d’une pièce à l’autre.' }));
+    if (!isAccessoire) {
+    info.appendChild(h('div', { class: 'notice' }, [
+      h('strong', { text: 'Peluche décorative' }),
+      h('p', { text: 'Cette peluche est décorative : elle n’est pas destinée aux enfants de moins de 36 mois.' })
+    ]));
+  }
+
+  info.appendChild(h('p', {
+    class: 'detail-handmade',
+    text: isAccessoire
+      ? 'Chaque pièce est crochetée à la main : de légères différences sont possibles d’une pièce à l’autre.'
+      : 'Chaque peluche est crochetée à la main : de légères différences sont possibles d’une pièce à l’autre.'
+  }));
   info.appendChild(h('a', { class: 'btn btn-primary', href: 'index.html#contact', text: 'Me poser une question' }));
+
+  // --- lien de retour : accueil si on vient de l'accueil, sinon la bonne galerie ---
+  var backHref = isAccessoire ? 'accessoires.html' : 'peluches.html';
+  var backLabel = isAccessoire ? '← Porte-clés & déco' : '← Toutes les peluches';
+
+  if (from === 'accueil') {
+    backHref = 'index.html#creations';
+    backLabel = '← Retour à l’accueil';
+  }
+
+  var backLink = h('a', { class: 'back-link', href: backHref, text: backLabel });
+    // --- onglet actif du menu : selon la catégorie de la fiche ---
+  var pageActive = isAccessoire ? 'accessoires.html' : 'peluches.html';
+  document.querySelectorAll('nav.links a, .mobile-panel a').forEach(function (a) {
+    a.classList.toggle('active', a.getAttribute('href') === pageActive);
+  });
 
   // --- assemblage ---
   var wrap = h('div', { class: 'wrap' }, [
-    h('a', { class: 'back-link', href: 'peluches.html', text: '← Toutes les peluches' }),
+    backLink,
     h('div', { class: 'detail' }, [photos, info])
   ]);
   root.appendChild(wrap);
 
-  // --- à découvrir aussi (les 3 suivantes dans la liste) ---
+  // --- à découvrir aussi (les 3 suivantes de la même catégorie) ---
+  var same = PELUCHES.filter(function (q) {
+    return (q.categorie || 'peluche') === (p.categorie || 'peluche');
+  });
+  var pos = same.indexOf(p);
   var others = [];
-  for (var k = 1; k <= 3 && k < PELUCHES.length; k++) {
-    others.push(PELUCHES[(idx + k) % PELUCHES.length]);
+  for (var k = 1; k <= 3 && k < same.length; k++) {
+    others.push(same[(pos + k) % same.length]);
   }
+
   if (others.length) {
     root.appendChild(h('div', { class: 'wrap see-also' }, [
       h('h2', { class: 'gallery-title', text: 'À découvrir aussi' }),
-      h('div', { class: 'grid-3 gallery' }, others.map(makeCard))
+      h('div', { class: 'grid-3 gallery' }, others.map(function (q) {
+        return makeCard(q, from);
+      }))
     ]));
   }
+})();
+
+// =====================================================================
+//  Boutons « Copier »
+// =====================================================================
+(function () {
+  document.querySelectorAll('[data-copy]').forEach(function (btn) {
+    var label = btn.textContent;
+    btn.addEventListener('click', function () {
+      var text = btn.getAttribute('data-copy');
+
+      function done() {
+        btn.textContent = 'Copié ✓';
+        btn.classList.add('done');
+        setTimeout(function () {
+          btn.textContent = label;
+          btn.classList.remove('done');
+        }, 1800);
+      }
+      function fallback() {
+        var t = document.createElement('textarea');
+        t.value = text;
+        t.style.position = 'fixed';
+        t.style.opacity = '0';
+        document.body.appendChild(t);
+        t.select();
+        try { document.execCommand('copy'); done(); } catch (e) {}
+        document.body.removeChild(t);
+      }
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(done, fallback);
+      } else {
+        fallback();
+      }
+    });
+  });
 })();
