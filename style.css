@@ -232,3 +232,6 @@ a.card-link:focus-visible{outline:3px solid var(--mustard);outline-offset:3px;}
 @media (max-width:560px){
   .see-also .card:nth-child(3){display:none;}
 }
+
+.footer-social{display:flex;gap:22px;flex-wrap:wrap;font-size:14px;margin-top:14px;}
+.footer-social a:hover{color:var(--mustard);}
