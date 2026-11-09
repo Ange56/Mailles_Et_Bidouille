@@ -36,9 +36,36 @@ function makeCard(p) {
   ]);
 }
 
-// =====================================================================
+
+// ---------- Liens vers mes autres pages ----------
+var LIENS = [
+  { nom: 'Instagram', url: 'https://www.instagram.com/mailles_et_bidouille?utm_source=ig_web_button_share_sheet&xtok=ZDNlZDc0MzIxNw==' },
+  { nom: 'Facebook', url: 'https://www.facebook.com/share/19e8442oCR/' },
+  { nom: 'Mon dressing Vinted', url: 'https://www.vinted.fr/member/85136978-abreizha' }
+];
+
+
+
+document.querySelectorAll('[data-vinted]').forEach(function (a) {
+  var v = LIENS.filter(function (l) { return /vinted/i.test(l.nom); })[0];
+  if (v) a.href = v.url;
+});
+
+(function () {
+  document.querySelectorAll('[data-social]').forEach(function (zone) {
+    LIENS.forEach(function (l) {
+      var a = document.createElement('a');
+      a.href = l.url;
+      a.textContent = l.nom;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      zone.appendChild(a);
+    });
+  });
+})();
+
+
 //  Menu mobile
-// =====================================================================
 (function () {
   var burger = document.querySelector('.burger');
   var panel = document.getElementById('mobile-panel');
