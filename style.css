@@ -21,7 +21,21 @@ header{position:sticky;top:0;z-index:50;background:rgba(250,246,236,0.92);backdr
 
 
 .logo{font-family:'Fraunces',serif;font-weight:600;font-size:22px;color:var(--pine);display:flex;align-items:center;gap:8px;}
-.logo svg{width:26px;height:26px;flex-shrink:0;}
+/* .logo svg{width:26px;height:26px;flex-shrink:0;} */
+
+/* .logo-img{
+  width:44px;
+  height:44px;
+  flex-shrink:0;
+} */
+.logo-img{
+  width:48px;
+  height:48px;
+  flex-shrink:0;
+  border-radius:50%;
+  border:1.5px solid var(--mustard);
+}
+
 nav.links{display:flex;gap:28px;font-size:15px;font-weight:500;align-items:center;}
 nav.links a{position:relative;padding:4px 0;color:var(--ink);}
 nav.links a.active{color:var(--berry);}
@@ -268,3 +282,7 @@ footer{padding:32px 0 20px;}
 .footer-social{margin-top:0;gap:8px 22px;}
 .footer-notice{padding-top:14px;margin:0 0 14px;}
 .footer-bottom{padding-top:14px;}
+
+.detail-credit{font-size:14px;color:var(--ink-soft);margin:0 0 18px;}
+.detail-credit a{text-decoration:underline;}
+.detail-credit a:hover{color:var(--berry);}

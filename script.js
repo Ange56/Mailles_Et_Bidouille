@@ -232,6 +232,16 @@ document.querySelectorAll('[data-vinted]').forEach(function (a) {
     ]));
   }
 
+  if (p.patron) {
+    var credit = h('p', { class: 'detail-credit' }, [document.createTextNode('Patron réalisé par : ')]);
+    if (p.patron.url) {
+      credit.appendChild(h('a', { href: p.patron.url, target: '_blank', rel: 'noopener noreferrer', text: p.patron.nom }));
+    } else {
+      credit.appendChild(document.createTextNode(p.patron.nom));
+    }
+    info.appendChild(credit);
+  }
+
   // info.appendChild(h('div', { class: 'notice' }, [
   //   h('strong', { text: 'Peluche décorative' }),
   //   h('p', { text: 'Cette peluche est décorative : elle n’est pas destinée aux enfants de moins de 36 mois.' })

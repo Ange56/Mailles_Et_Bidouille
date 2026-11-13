@@ -23,6 +23,7 @@ var PELUCHES = [
     nom: "Rouge, gris et bleu",
     description: "Un petit poulpe farceur, tout en fantaisie. Son chapeau pointu gris est coiffé d'un pompon rouge, sa collerette est bordeaux et ses tentacules en spirale mélangent le rouge, le bleu et le gris. Crocheté à la main, en fil doux et moelleux.",
     taille: "",
+    patron: { nom: "crochetcorner0114", url: "https://www.instagram.com/crochetcorner0114" },
     photos: [
       { src: "images/peluches_deco/clown/poulpe-clown-tricolore.jpg", alt: "Poulpe clown au crochet rouge, gris et bleu, avec un chapeau pointu", pos: "15%" },
       { src: "images/peluches_deco/clown/poulpes-clowns-duo-table.jpg", alt: "Deux poulpes clowns au crochet côte à côte, l'un rouge, gris et bleu, l'autre jaune", pos: "15%" }
@@ -35,6 +36,7 @@ var PELUCHES = [
     nom: "Jaune, rouge et bleu",
     description: "Le plus joyeux de la bande ! Chapeau jaune à pompon rouge, collerette rouge vif et tentacules qui jouent avec le jaune, le rouge et le bleu. Crocheté à la main, en fil doux et moelleux.",
     taille: "",
+    patron: { nom: "crochetcorner0114", url: "https://www.instagram.com/crochetcorner0114" },
     photos: [
       { src: "images/peluches_deco/clown/poulpe-clown-jaune.jpg", alt: "Poulpe clown au crochet jaune, rouge et bleu, avec un chapeau pointu", pos: "15%" },
       { src: "images/peluches_deco/clown/poulpes-clowns-duo-table.jpg", alt: "Deux poulpes clowns au crochet côte à côte, l'un rouge, gris et bleu, l'autre jaune", pos: "15%" }
@@ -47,6 +49,7 @@ var PELUCHES = [
     nom: "Orange et bleu",
     description: "Un poulpe aux couleurs chaudes : chapeau orange à pompon gris, petite collerette bleue, grande collerette orange et tentacules bleus, orange et gris. Crocheté à la main, en fil doux et moelleux.",
     taille: "",
+    patron: { nom: "crochetcorner0114", url: "https://www.instagram.com/crochetcorner0114" },
     photos: [
       { src: "images/peluches_deco/clown/poulpe-clown-orange-bleu.jpg", alt: "Poulpe clown au crochet orange, bleu et gris, posé sur un tabouret", pos: "15%" },
       { src: "images/peluches_deco/clown/poulpes-clowns-duo-tabouret.jpg", alt: "Deux poulpes clowns au crochet côte à côte sur un tabouret, l'un orange et bleu, l'autre gris et bordeaux", pos: "15%" }
@@ -59,6 +62,7 @@ var PELUCHES = [
     nom: "Gris, orange et bordeaux",
     description: "Un poulpe tout en douceur : chapeau gris à pompon bordeaux, collerette orange, et des tentacules gris, orange et bordeaux, certains rayés. Crocheté à la main, en fil doux et moelleux.",
     taille: "",
+    patron: { nom: "crochetcorner0114", url: "https://www.instagram.com/crochetcorner0114" },
     photos: [
       { src: "images/peluches_deco/clown/poulpe-clown-orange-gris.jpg", alt: "Poulpe clown au crochet gris, orange et bordeaux, posé sur un tabouret", pos: "15%" },
       { src: "images/peluches_deco/clown/poulpes-clowns-duo-tabouret.jpg", alt: "Deux poulpes clowns au crochet côte à côte sur un tabouret, l'un orange et bleu, l'autre gris et bordeaux", pos: "15%" }
@@ -97,6 +101,7 @@ var PELUCHES = [
     nom: "Bleu",
     description: "Un petit dragon bleu, avec ses deux cornes blanches, ses ailes doublées d'orange et sa queue orange. Crocheté à la main, en fil doux et moelleux.",
     taille: "Environ 30 cm.",
+    patron: { nom: "loopsandknotscrochet", url: "https://www.instagram.com/loopsandknotscrochet" },
     photos: [
       { src: "images/peluches_deco/dragons/dragon1/peluche-dragon.jpg", alt: "Peluche dragon bleu au crochet, avec des cornes blanches et des ailes orange", pos: "40%" },
       { src: "images/peluches_deco/dragons/dragon1/peluche-dragon2.jpeg", alt: "Peluche dragon bleu au crochet, autre vue", pos: "40%" }
@@ -109,6 +114,7 @@ var PELUCHES = [
     nom: "Turquoise",
     description: "Un petit dragon bleu clair, avec ses deux cornes blanches, ses ailes doublées rose et sa queue rose. Crocheté à la main, en fil doux et moelleux.",
     taille: "Environ 30 cm.",
+    patron: { nom: "loopsandknotscrochet", url: "https://www.instagram.com/loopsandknotscrochet" },
     photos: [
       { src: "images/peluches_deco/dragons/dragon2/dragon2.jpeg", alt: "Peluche dragon au crochet", pos: "40%" },
       { src: "images/peluches_deco/dragons/dragon2/dragon1.jpeg", alt: "Peluche dragon au crochet, vue 2", pos: "40%" },
@@ -125,6 +131,7 @@ var PELUCHES = [
     nom: "Le pélican",
     description: "Un grand pélican blanc, avec son énorme bec moutarde en forme de poche, ses pattes assorties et ses touches de noir. Il ne passe jamais inaperçu ! Crocheté à la main, en fil doux et moelleux.",
     taille: "",
+    patron: { nom: "airali_gray", url: "https://www.instagram.com/airali_gray" },
     photos: [
       { src: "images/peluches_deco/pelican/peluche-pelican.jpg", alt: "Peluche pélican blanc au crochet avec un grand bec moutarde", pos: "30%" }
     ]
@@ -136,7 +143,9 @@ var PELUCHES = [
     famille: "Les porte-clés",
     type: "Porte-clés",
     nom: "La poule",
-    description: "Des petites poules blanches tout rondes, avec leur crête rouge, leur bec jaune et leurs yeux noirs, montées sur un anneau porte-clés. Crochetées à la main, en fil doux et moelleux.",    taille: "",
+    description: "Des petites poules blanches tout rondes, avec leur crête rouge, leur bec jaune et leurs yeux noirs, montées sur un anneau porte-clés. Crochetées à la main, en fil doux et moelleux.",    
+    taille: "",
+    patron: { nom: "stitchedbyninette", url: "https://www.instagram.com/stitchedbyninette" },
     photos: [
       { src: "images/portes_cle/poule/porte_cle_poules1.jpeg", alt: "Porte-clés poule au crochet", pos: "40%" },
       { src: "images/portes_cle/poule/porte_cle_poules2.jpeg", alt: "Porte-clés poule au crochet, autre vue", pos: "40%" }
