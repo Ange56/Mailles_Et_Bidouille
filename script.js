@@ -342,3 +342,62 @@ document.querySelectorAll('[data-vinted]').forEach(function (a) {
     });
   });
 })();
+
+
+
+
+// =====================================================================
+//  Apparition progressive des blocs quand on défile
+//  (désactivée si le visiteur a demandé « moins d'animations »)
+// =====================================================================
+(function () {
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var SELECTEURS = [
+    '.hero .wrap > div',
+    '.section-head',
+    '.about-text',
+    '.card',
+    '.gallery-title',
+    '.soon-card',
+    '.detail',
+    '.patron-body > *',
+    '.vinted-section .wrap > a',
+    '#contact .wrap > a'
+  ].join(',');
+
+  var items = document.querySelectorAll(SELECTEURS);
+  if (!items.length) return;
+
+  document.documentElement.classList.add('js-reveal');
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      var el = e.target;
+      if (e.isIntersecting) {
+        el.classList.add('is-visible');
+        io.unobserve(el);
+        // une fois l'animation finie, on retire les classes (pour ne pas gêner l'effet au survol des cartes)
+        el.addEventListener('animationend', function () {
+          el.classList.remove('reveal', 'is-visible');
+          el.style.animationDelay = '';
+        }, { once: true });
+      } else if (e.boundingClientRect.top < 0) {
+        // élément déjà dépassé (arrivée par un lien #ancre) : on l'affiche sans animation
+        el.classList.remove('reveal');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  items.forEach(function (el) {
+    el.classList.add('reveal');
+    // petit décalage entre cartes voisines : elles arrivent l'une après l'autre
+    if (el.classList.contains('card')) {
+      var i = Array.prototype.indexOf.call(el.parentNode.children, el);
+      el.style.animationDelay = (i % 3) * 0.12 + 's';
+    }
+    io.observe(el);
+  });
+})();
