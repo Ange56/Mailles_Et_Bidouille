@@ -286,3 +286,13 @@ footer{padding:32px 0 20px;}
 .detail-credit{font-size:14px;color:var(--ink-soft);margin:0 0 18px;}
 .detail-credit a{text-decoration:underline;}
 .detail-credit a:hover{color:var(--berry);}
+
+
+
+/* --- apparition des blocs au défilement --- */
+@keyframes rise{
+  from{opacity:0;transform:translateY(24px);}
+  to{opacity:1;transform:none;}
+}
+.js-reveal .reveal{opacity:0;}
+.js-reveal .reveal.is-visible{animation:rise .7s ease both;}
