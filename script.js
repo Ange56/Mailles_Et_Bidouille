@@ -344,6 +344,25 @@ document.querySelectorAll('[data-vinted]').forEach(function (a) {
 })();
 
 
+// =====================================================================
+//  Typographie française : espace insécable avant ? ! : ;
+//  (le signe ne passe plus à la ligne tout seul)
+// =====================================================================
+(function () {
+  var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+    acceptNode: function (n) {
+      var tag = n.parentNode.nodeName;
+      if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'TEXTAREA') return NodeFilter.FILTER_REJECT;
+      return /\s[?!:;]/.test(n.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+    }
+  });
+  var nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  nodes.forEach(function (n) {
+    n.nodeValue = n.nodeValue.replace(/[ \t]+([?!:;])/g, '\u00A0$1');
+  });
+})();
+
 
 
 // =====================================================================
