@@ -109,6 +109,11 @@ section{padding:64px 0;}
 @media (max-width:560px){ .page-head h1{font-size:30px;} }
 .page-head p{color:var(--ink-soft);font-size:16px;max-width:52ch;margin:14px auto 0;}
 
+/* Permet au titre de la section Contact de s'élargir pour tenir sur une seule ligne */
+#contact .section-head {
+  max-width: 900px; /* Tu peux ajuster cette valeur si besoin */
+}
+
 /* --- about --- */
 .about{background:var(--cream-2);}
 .about .wrap{display:grid;grid-template-columns:0.85fr 1.15fr;gap:48px;align-items:center;}
